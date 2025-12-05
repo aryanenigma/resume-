@@ -1,0 +1,595 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light Mode Colors - Minimal Design */
+  --primary-color: #2563eb;
+  --text-primary: #111;
+  --text-secondary: #666;
+  --background: #ffffff;
+  --card-bg: #f9fafb;
+  --border-color: #e5e7eb;
+  --hover-bg: #f3f4f6;
+}
+
+body.dark-mode {
+  /* Dark Mode Colors */
+  --background: #0f172a;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b0b0b0;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --hover-bg: #1a1f35;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Enhanced theme toggle with improved styling and animations */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  background-color: var(--background);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.theme-btn:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  transform: scale(1.05);
+}
+
+.theme-btn:active {
+  transform: scale(0.98);
+}
+
+.theme-btn svg {
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sun-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.moon-icon {
+  opacity: 0;
+  position: absolute;
+  transform: rotate(-180deg);
+}
+
+body.dark-mode .sun-icon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+body.dark-mode .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Minimal download button without gradient */
+.download-btn-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+.download-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Main Container */
+.resume-container {
+  max-width: 900px;
+  margin: 80px auto 40px;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Minimal header without gradient */
+.resume-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.header-content {
+  margin-bottom: 28px;
+}
+
+.name {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 6px;
+  opacity: 0.95;
+}
+
+.subtitle {
+  font-size: 0.95em;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.9em;
+}
+
+.contact-item {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.contact-item:hover {
+  opacity: 0.85;
+}
+
+/* Main Content */
+.resume-content {
+  padding: 48px 40px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+  letter-spacing: -0.5px;
+}
+
+/* Professional Summary */
+.summary-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.95em;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.skill-item {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  padding: 12px 14px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9em;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.skill-item:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--hover-bg);
+}
+
+.service-card h3 {
+  font-size: 1em;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.service-card p {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Education Card */
+.education-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-2px);
+}
+
+.education-card h3 {
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.education-details {
+  font-size: 0.9em;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.education-desc {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 6px;
+  border-top: 3px solid var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--hover-bg);
+}
+
+.project-card h3 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.project-desc {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tech-badge {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.project-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.project-link:hover {
+  transform: translateX(3px);
+}
+
+/* Soft Skills */
+.soft-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.soft-skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.soft-skill-item:hover {
+  background-color: var(--hover-bg);
+  transform: translateX(2px);
+}
+
+.checkmark {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.soft-skill-item span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+/* Footer */
+.resume-footer {
+  background-color: var(--card-bg);
+  padding: 20px 40px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Minimal fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resume-container {
+    margin: 90px 12px 20px;
+  }
+
+  .resume-header {
+    padding: 36px 24px;
+  }
+
+  .name {
+    font-size: 2em;
+  }
+
+  .title {
+    font-size: 1.05em;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.85em;
+  }
+
+  .resume-content {
+    padding: 30px 24px;
+  }
+
+  .section-title {
+    font-size: 1.2em;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .soft-skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .download-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-header {
+    padding: 24px 16px;
+  }
+
+  .name {
+    font-size: 1.6em;
+  }
+
+  .title {
+    font-size: 0.95em;
+  }
+
+  .subtitle {
+    font-size: 0.85em;
+  }
+
+  .contact-info {
+    gap: 8px;
+    font-size: 0.8em;
+  }
+
+  .resume-content {
+    padding: 20px 16px;
+  }
+
+  .section-title {
+    font-size: 1.1em;
+    margin-bottom: 16px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .skill-item {
+    padding: 10px 12px;
+    font-size: 0.85em;
+  }
+
+  .services-grid {
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 16px;
+  }
+
+  .projects-grid {
+    gap: 16px;
+  }
+
+  .soft-skills {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .download-btn-container,
+  .theme-toggle {
+    position: static;
+    margin: 12px;
+    display: inline-block;
+  }
+
+  .resume-container {
+    margin: 12px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .theme-toggle,
+  .download-btn-container {
+    display: none;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  .resume-container {
+    border: none;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .resume-header {
+    background-color: var(--primary-color);
+  }
+}
